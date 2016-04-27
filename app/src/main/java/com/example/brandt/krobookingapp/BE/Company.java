@@ -9,5 +9,5 @@ public class Company {
     Boolean keybox;
     String notes;
     String customerEmail;
-    
+
 }
