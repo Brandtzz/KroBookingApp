@@ -1,7 +1,9 @@
-package com.example.brandt.krobookingapp;
+package com.example.brandt.krobookingapp.UI;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.brandt.krobookingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
