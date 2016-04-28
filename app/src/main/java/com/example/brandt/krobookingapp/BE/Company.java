@@ -6,8 +6,6 @@ package com.example.brandt.krobookingapp.BE;
 public class Company {
     String name;
     String phoneNumber;
-    Boolean keybox;
-    String notes;
-    String customerEmail;
+    String companyEmail;
 
 }
