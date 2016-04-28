@@ -7,5 +7,4 @@ public class Company {
     String name;
     String phoneNumber;
     String companyEmail;
-
 }
