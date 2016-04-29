@@ -1,5 +1,6 @@
 package com.example.brandt.krobookingapp.UI;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,18 +9,38 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.brandt.krobookingapp.BE.Rooms;
+import com.example.brandt.krobookingapp.BLL.JSONParser;
 import com.example.brandt.krobookingapp.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.json.JSONException;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String API_URL = "http://bookingsystem-branddt.rhcloud.com/api/Rooms";
 
     TextView responseView;
+    JSONParser jsonParser;
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,63 +48,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         responseView = (TextView) findViewById(R.id.responseView);
-        Button queryButton = (Button) findViewById(R.id.queryButton);
-        queryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new RetrieveFeedTask().execute();
-            }
-        });
+
+
+        jsonParser = new JSONParser(this);
+
+
+    }
+
+
+    public void populateView(ArrayList<Rooms> all)
+    {
+        Log.d("XYZ", "GUI viser " + all.size() + " rum");
+        
     }
 
 
 
-    class RetrieveFeedTask extends AsyncTask<Void, Void, String> {
 
-        private Exception exception;
 
-        protected void onPreExecute() {
-           // progressBar.setVisibility(View.VISIBLE);
-            responseView.setText("");
-        }
 
-        protected String doInBackground(Void... urls) {
 
-            // Do some validation here
 
-            try {
-                URL url = new URL(API_URL);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                try {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-                    return stringBuilder.toString();
-                }
-                finally{
-                    urlConnection.disconnect();
-                }
-            }
-            catch(Exception e) {
-                Log.e("ERROR", e.getMessage(), e);
-                return null;
-            }
-        }
 
-        protected void onPostExecute(String response) {
-            if(response == null) {
-                response = "THERE WAS AN ERROR";
-            }
 
-            Log.i("INFO", response);
-            responseView.setText(response);
 
-        }
-    }
+
+
+
+
 
 
 }
