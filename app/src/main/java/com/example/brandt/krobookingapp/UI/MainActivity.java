@@ -41,11 +41,15 @@ public class MainActivity extends AppCompatActivity {
     public void populateView(ArrayList<Rooms> all)
     {
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
+<<<<<<< HEAD
         
 
 
 
         
+=======
+
+>>>>>>> fceec36c5903ad5cad5924d8fd276c601d9c9e48
     }
 
 
