@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void populateView(ArrayList<Rooms> all)
     {
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
-        
+
     }
 
 
