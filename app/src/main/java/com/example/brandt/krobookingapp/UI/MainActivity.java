@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
     {
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
         
+
+
+
+        
     }
 
 
