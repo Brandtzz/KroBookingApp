@@ -3,6 +3,9 @@ package com.example.brandt.krobookingapp.UI;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.brandt.krobookingapp.BE.Rooms;
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView responseView;
     TextView helloWorld;
-
+    ASyncReader aSyncReader;
 
 
 
@@ -28,13 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        responseView = (TextView) findViewById(R.id.responseView);
-        helloWorld = (TextView) findViewById(R.id.helloWorld);
-
-
         new ASyncReader(this).execute();
-
-
 
     }
 
@@ -44,5 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+  /**  private void seedTables() {
+        TableLayout table = (TableLayout) findViewById(R.id.rentedTodayColloun);
+        for (int i = 0; i < ; i++) {
 
+            TableRow tableRow1 = new TableRow(VideoDatabase1.this);
+            localchannel1 = channel_arraylist.get(i);
+
+            TextView tvid = new TextView(VideoDatabase1.this);
+            tvid.setText("" + Integer.toString(localchannel1.getID()));
+            tableRow2.addView(tvid);
+
+            table.addView(tableRow2);
+        }
+    } */
 }
