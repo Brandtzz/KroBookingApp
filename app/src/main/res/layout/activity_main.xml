@@ -10,10 +10,18 @@
     tools:context=".UI.MainActivity">
 
 
+<<<<<<< HEAD
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+=======
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/test"
+        />
+>>>>>>> 6d3cf9b2cacf0e94028298ec3517419d13db1abe
 
     <TextView
         android:layout_width="wrap_content"

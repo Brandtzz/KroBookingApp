@@ -3,6 +3,8 @@ package com.example.brandt.krobookingapp.BLL;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.brandt.krobookingapp.BE.Company;
+import com.example.brandt.krobookingapp.BE.Customer;
 import com.example.brandt.krobookingapp.BE.Rooms;
 import com.example.brandt.krobookingapp.UI.MainActivity;
 
@@ -49,23 +51,30 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                    boolean rented = room.getBoolean("Rented");
                    boolean doubleRoom = room.getBoolean("Double");
                    boolean extraBed = room.getBoolean("ExtraBed");
+                   boolean bathRoom = room.getBoolean("BathRoom");
+                   int roomPrice = room.getInt("RoomPrice");
                    boolean animal = room.getBoolean("Animal");
 
+
                    JSONObject customer = room.getJSONObject("Customer");
-                   String customerName = customer.getString("Name");
-                   String customerPhoneNumber = customer.getString("PhoneNumber");
+                   String customerName = customer.getString("CustomerName");
+                   String customerPhoneNumber = customer.getString("CustomerPhoneNumber");
                    boolean keybox = customer.getBoolean("Keybox");
                    String notes = customer.getString("Notes");
+                   String customerEmail = customer.getString("CustomerEmail");
 
                    JSONObject company =customer.getJSONObject("Company");
-                   String companyName = company.getString("Name");
-                   String companyPhoneNumber = company.getString("PhoneNumber");
+                   String companyName = company.getString("CompanyName");
+                   String companyPhoneNumber = company.getString("CompanyPhoneNumber");
+                   String companyEmail = company.getString("CompanyEmail");
 
 
-
-                   Rooms r = new Rooms();
+                   Company co = new Company(companyName,companyPhoneNumber,companyEmail);
+                   Customer cu = new Customer(customerName,customerPhoneNumber,keybox,notes,customerEmail,co);
+                   Rooms r = new Rooms(id,roomNumber,rented,doubleRoom,extraBed,bathRoom,roomPrice,animal,cu);
                    all.add(r);
                }
+
            } catch (JSONException e)
            {
                 Log.d("XYZ","jsonerror:" + e.getMessage());
