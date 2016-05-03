@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,12 +22,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView responseView;
-    TextView helloWorld;
-    ASyncReader aSyncReader;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,24 +31,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void populateView(ArrayList<Rooms> all)
-    {
+    TextView isRoomNumber;
+    TextView isAvailable;
+
+    public void populateView(ArrayList<Rooms> all) {
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
-
-    }
-
-   /** private void seedTables() {
         TableLayout table = (TableLayout) findViewById(R.id.rentedTodayColloun);
-        for (int i = 0; i < ; i++) {
 
-            TableRow tableRow1 = new TableRow(VideoDatabase1.this);
-            localchannel1 = channel_arraylist.get(i);
+        for (int i = 0; i < all.size(); i++) {
+            TableRow row = new TableRow(this);
+            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+            row.setLayoutParams(layoutParams);
 
-            TextView tvid = new TextView(VideoDatabase1.this);
-            tvid.setText("" + Integer.toString(localchannel1.getID()));
-            tableRow2.addView(tvid);
+            Rooms test = all.get(i);
+            int roomNumber = test.getRoomNumber();
+            boolean available = test.isRented();
 
-            table.addView(tableRow2);
+            isRoomNumber = new TextView(this);
+            isAvailable = new TextView(this);
+
+
+            isAvailable.setText("is room available? " + available);
+            isRoomNumber.setText("" + roomNumber);
+            row.addView(isRoomNumber);
+            row.addView(isAvailable);
+            table.addView(row,i);
         }
-    } */
+    }
 }
