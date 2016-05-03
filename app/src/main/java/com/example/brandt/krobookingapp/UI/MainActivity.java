@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.brandt.krobookingapp.BE.Customer;
 import com.example.brandt.krobookingapp.BE.Rooms;
 import com.example.brandt.krobookingapp.BLL.ASyncReader;
 import com.example.brandt.krobookingapp.R;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView responseView;
-    TextView helloWorld;
+
+    TextView test;
 
 
 
@@ -28,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        responseView = (TextView) findViewById(R.id.responseView);
-        helloWorld = (TextView) findViewById(R.id.helloWorld);
+
+        test = (TextView) findViewById(R.id.test);
+
 
 
         new ASyncReader(this).execute();
@@ -40,16 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void populateView(ArrayList<Rooms> all)
     {
+
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
-<<<<<<< HEAD
-        
+
+        Rooms room1 = all.get(0);
+        String roomnumber =room1.getCustomer().getCompany().getCompanyName();
+
+        test.setText("RoomNumber: " + roomnumber);
 
 
 
-        
-=======
 
->>>>>>> fceec36c5903ad5cad5924d8fd276c601d9c9e48
+
     }
 
 
