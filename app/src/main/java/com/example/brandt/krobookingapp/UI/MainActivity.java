@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-  /**  private void seedTables() {
+   /** private void seedTables() {
         TableLayout table = (TableLayout) findViewById(R.id.rentedTodayColloun);
         for (int i = 0; i < ; i++) {
 
