@@ -1,5 +1,7 @@
 package com.example.brandt.krobookingapp.UI;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
             isRoomNumber = new TextView(this);
             isBooked = new TextView(this);
 
-
             if(booked == false) {
                 isBooked.setText(" \n This room is available!");
+                isBooked.setTextColor(Color.rgb(0, 200, 0));
             }
             else if (booked == true) {
                 isBooked.setText(" \n This room i currently booked");
+                isBooked.setTextColor(Color.rgb(200, 0, 0));
             }
             isRoomNumber.setText(" \n Room number: " + roomNumber);
 

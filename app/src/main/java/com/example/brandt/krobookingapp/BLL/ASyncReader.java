@@ -63,7 +63,7 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                    String notes = customer.getString("Notes");
                    String customerEmail = customer.getString("CustomerEmail");
 
-                   JSONObject company =customer.getJSONObject("Company");
+                   JSONObject company = customer.getJSONObject("Company");
                    String companyName = company.getString("CompanyName");
                    String companyPhoneNumber = company.getString("CompanyPhoneNumber");
                    String companyEmail = company.getString("CompanyEmail");
@@ -77,7 +77,7 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
 
            } catch (JSONException e)
            {
-                Log.d("XYZ","jsonerror:" + e.getMessage());
+                Log.d("XYZ","jsonerror: " + e.getMessage());
            }
            return all;
        }
