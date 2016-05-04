@@ -3,9 +3,6 @@ package com.example.brandt.krobookingapp.UI;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -14,8 +11,6 @@ import com.example.brandt.krobookingapp.BE.Rooms;
 import com.example.brandt.krobookingapp.BLL.ASyncReader;
 import com.example.brandt.krobookingapp.R;
 
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     TextView isRoomNumber;
-    TextView isAvailable;
+    TextView isBooked;
 
     public void populateView(ArrayList<Rooms> all) {
         Log.d("XYZ", "GUI viser " + all.size() + " rum");
@@ -45,16 +40,24 @@ public class MainActivity extends AppCompatActivity {
 
             Rooms test = all.get(i);
             int roomNumber = test.getRoomNumber();
-            boolean available = test.isRented();
+            boolean booked = test.isRented();
 
             isRoomNumber = new TextView(this);
-            isAvailable = new TextView(this);
+            isBooked = new TextView(this);
 
 
-            isAvailable.setText("is room available? " + available);
-            isRoomNumber.setText("" + roomNumber);
+            if(booked == false) {
+                isBooked.setText(" This room is available!");
+            }
+            else if (booked == true) {
+                isBooked.setText(" This room i currently booked");
+            }
+            isRoomNumber.setText("Room number: " + roomNumber);
+
             row.addView(isRoomNumber);
-            row.addView(isAvailable);
+            
+            row.addView(isBooked);
+
             table.addView(row,i);
         }
     }
