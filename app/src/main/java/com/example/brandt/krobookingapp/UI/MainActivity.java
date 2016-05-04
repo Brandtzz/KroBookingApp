@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             if(booked == false) {
-                isBooked.setText(" This room is available!");
+                isBooked.setText(" \n This room is available!");
             }
             else if (booked == true) {
-                isBooked.setText(" This room i currently booked");
+                isBooked.setText(" \n This room i currently booked");
             }
-            isRoomNumber.setText("Room number: " + roomNumber);
+            isRoomNumber.setText(" \n Room number: " + roomNumber);
 
             row.addView(isRoomNumber);
-            
+
             row.addView(isBooked);
 
             table.addView(row,i);
