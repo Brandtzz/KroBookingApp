@@ -11,26 +11,18 @@ public class Rooms {
     int roomNumber;
     boolean rented;
     boolean doubleRoom;
-    boolean extraBed;
-    boolean bathroom;
+    boolean bathRoom;
     int roomPrice;
-    boolean animal;
-    Date arrivalDate;
-    Date departureDate;
-    Customer customer;
+    Booking booking;
 
-    public Rooms(String id, int roomNumber, boolean rented, boolean doubleRoom, boolean extraBed, boolean bathroom, int roomPrice, boolean animal, Customer custemor) {
+    public Rooms(String id, int roomNumber, boolean rented, boolean doubleRoom, boolean bathRoom, int roomPrice, Booking booking) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.rented = rented;
         this.doubleRoom = doubleRoom;
-        this.extraBed = extraBed;
-        this.bathroom = bathroom;
+        this.bathRoom = bathRoom;
         this.roomPrice = roomPrice;
-        this.animal = animal;
-        this.customer = custemor;
-
-
+        this.booking = booking;
     }
 
     public String getId() {
@@ -65,20 +57,12 @@ public class Rooms {
         this.doubleRoom = doubleRoom;
     }
 
-    public boolean isExtraBed() {
-        return extraBed;
+    public boolean isBathRoom() {
+        return bathRoom;
     }
 
-    public void setExtraBed(boolean extraBed) {
-        this.extraBed = extraBed;
-    }
-
-    public boolean isBathroom() {
-        return bathroom;
-    }
-
-    public void setBathroom(boolean bathroom) {
-        this.bathroom = bathroom;
+    public void setBathRoom(boolean bathRoom) {
+        this.bathRoom = bathRoom;
     }
 
     public int getRoomPrice() {
@@ -89,35 +73,11 @@ public class Rooms {
         this.roomPrice = roomPrice;
     }
 
-    public boolean isAnimal() {
-        return animal;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setAnimal(boolean animal) {
-        this.animal = animal;
-    }
-
-    public Date getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(Date arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Date getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }

@@ -3,6 +3,7 @@ package com.example.brandt.krobookingapp.BLL;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.brandt.krobookingapp.BE.Booking;
 import com.example.brandt.krobookingapp.BE.Company;
 import com.example.brandt.krobookingapp.BE.Customer;
 import com.example.brandt.krobookingapp.BE.Rooms;
@@ -50,13 +51,14 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                    int roomNumber = room.getInt("RoomNumber");
                    boolean rented = room.getBoolean("Rented");
                    boolean doubleRoom = room.getBoolean("Double");
-                   boolean extraBed = room.getBoolean("ExtraBed");
                    boolean bathRoom = room.getBoolean("BathRoom");
                    int roomPrice = room.getInt("RoomPrice");
-                   boolean animal = room.getBoolean("Animal");
 
+                   JSONObject booking = room.getJSONObject("Booking");
+                   boolean extraBed = booking.getBoolean("ExtraBed");
+                   boolean animal = booking.getBoolean("Animal");
 
-                   JSONObject customer = room.getJSONObject("Customer");
+                   JSONObject customer = booking.getJSONObject("Customer");
                    String customerName = customer.getString("CustomerName");
                    String customerPhoneNumber = customer.getString("CustomerPhoneNumber");
                    boolean keybox = customer.getBoolean("Keybox");
@@ -71,7 +73,8 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
 
                    Company co = new Company(companyName,companyPhoneNumber,companyEmail);
                    Customer cu = new Customer(customerName,customerPhoneNumber,keybox,notes,customerEmail,co);
-                   Rooms r = new Rooms(id,roomNumber,rented,doubleRoom,extraBed,bathRoom,roomPrice,animal,cu);
+                   Booking bu = new Booking(extraBed,animal,cu);
+                   Rooms r = new Rooms(id,roomNumber,rented,doubleRoom,bathRoom,roomPrice,bu);
                    all.add(r);
                }
 
