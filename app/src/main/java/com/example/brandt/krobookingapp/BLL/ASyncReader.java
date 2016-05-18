@@ -28,6 +28,7 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
     static final String API_URL = "http://bookingsystem-branddt.rhcloud.com/api/Rooms";
 
     MainActivity context;
+    JSONArray jsonArray;
 
     public ASyncReader(MainActivity c)
     {
@@ -48,22 +49,25 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                    boolean bathRoom = room.getBoolean("bathRoom");
                    int roomPrice = room.getInt("roomPrice");
 
-                   JSONObject booking = room.getJSONArray("bookings").getJSONObject(i);
-                   boolean doubleRoom = booking.getBoolean("double");
-                   boolean extraBed = booking.getBoolean("extraBed");
-                   boolean animal = booking.getBoolean("animal");
+                   if(room.getJSONArray("bookings").length() != 0){
+                 //  JSONObject booking = room.getJSONArray("bookings").getJSONObject(i);
+                   for (int n = 0; n < room.getJSONArray("bookings").length(); n++) {
+                       JSONObject booking = room.getJSONArray("bookings").getJSONObject(n);
+                       boolean doubleRoom = booking.getBoolean("double");
+                       boolean extraBed = booking.getBoolean("extraBed");
+                       boolean animal = booking.getBoolean("animal");
 
-                   JSONObject customer = booking.getJSONObject("customer");
-                   String customerName = customer.getString("customerName");
-                   String customerPhoneNumber = customer.getString("customerPhoneNumber");
-                   boolean keybox = customer.getBoolean("keybox");
-                   String notes = customer.getString("notes");
-                   String customerEmail = customer.getString("customerEmail");
+                       JSONObject customer = booking.getJSONObject("customer");
+                       String customerName = customer.getString("customerName");
+                       String customerPhoneNumber = customer.getString("customerPhoneNumber");
+                       boolean keybox = customer.getBoolean("keybox");
+                       String notes = customer.getString("notes");
+                       String customerEmail = customer.getString("customerEmail");
 
-                   JSONObject company = customer.getJSONObject("company");
-                   String companyName = company.getString("companyName");
-                   String companyPhoneNumber = company.getString("companyPhoneNumber");
-                   String companyEmail = company.getString("companyEmail");
+                       JSONObject company = customer.getJSONObject("company");
+                       String companyName = company.getString("companyName");
+                       String companyPhoneNumber = company.getString("companyPhoneNumber");
+                       String companyEmail = company.getString("companyEmail");
 
 
                    Company co = new Company(companyName,companyPhoneNumber,companyEmail);
@@ -71,6 +75,11 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                    Booking[] bu = new Booking[]{new Booking(extraBed,animal,doubleRoom,cu)};
                    Rooms r = new Rooms(id,roomNumber,rented,bathRoom,roomPrice,bu);
                    all.add(r);
+               } }
+               else{
+                       Rooms r = new Rooms(id,roomNumber,rented,bathRoom,roomPrice);
+                       all.add(r);
+                   }
                }
 
            } catch (JSONException e)

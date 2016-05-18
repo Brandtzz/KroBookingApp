@@ -14,6 +14,13 @@ public class Rooms {
     int roomPrice;
     Booking[] booking;
 
+    public Rooms(String id, int roomNumber, boolean rented, boolean bathRoom, int roomPrice) {
+        this.id = id;
+        this.roomNumber = roomNumber;
+        this.rented = rented;
+        this.bathRoom = bathRoom;
+        this.roomPrice = roomPrice;
+    }
     public Rooms(String id, int roomNumber, boolean rented, boolean bathRoom, int roomPrice, Booking[] booking) {
         this.id = id;
         this.roomNumber = roomNumber;
