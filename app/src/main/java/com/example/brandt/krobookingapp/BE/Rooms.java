@@ -10,16 +10,14 @@ public class Rooms {
     String id;
     int roomNumber;
     boolean rented;
-    boolean doubleRoom;
     boolean bathRoom;
     int roomPrice;
-    Booking booking;
+    Booking[] booking;
 
-    public Rooms(String id, int roomNumber, boolean rented, boolean doubleRoom, boolean bathRoom, int roomPrice, Booking booking) {
+    public Rooms(String id, int roomNumber, boolean rented, boolean bathRoom, int roomPrice, Booking[] booking) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.rented = rented;
-        this.doubleRoom = doubleRoom;
         this.bathRoom = bathRoom;
         this.roomPrice = roomPrice;
         this.booking = booking;
@@ -49,14 +47,6 @@ public class Rooms {
         this.rented = rented;
     }
 
-    public boolean isDoubleRoom() {
-        return doubleRoom;
-    }
-
-    public void setDoubleRoom(boolean doubleRoom) {
-        this.doubleRoom = doubleRoom;
-    }
-
     public boolean isBathRoom() {
         return bathRoom;
     }
@@ -73,11 +63,11 @@ public class Rooms {
         this.roomPrice = roomPrice;
     }
 
-    public Booking getBooking() {
+    public Booking[] getBooking() {
         return booking;
     }
 
-    public void setBooking(Booking booking) {
+    public void setBooking(Booking[] booking) {
         this.booking = booking;
     }
 }

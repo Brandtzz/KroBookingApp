@@ -8,13 +8,17 @@ import java.util.Date;
 public class Booking {
     boolean extraBed;
     boolean animal;
+    boolean doubleRoom;
     Date arrivalDate;
     Date depatureDate;
     Customer Custemor;
 
-    public Booking(boolean extraBed, boolean animal, Customer custemor) {
+    public Booking(boolean extraBed, boolean animal, boolean doubleRoom, Customer custemor) {
         this.extraBed = extraBed;
         this.animal = animal;
+        this.doubleRoom = doubleRoom;
+        this.depatureDate = depatureDate;
+        this.arrivalDate = arrivalDate;
         Custemor = custemor;
     }
 
@@ -33,6 +37,10 @@ public class Booking {
     public void setAnimal(boolean animal) {
         this.animal = animal;
     }
+
+    public boolean isDoubleRoom() {return doubleRoom; }
+
+    public void setDoubleRoom ( boolean doubleRoom ){ this.doubleRoom = doubleRoom; }
 
     public Date getArrivalDate() {
         return arrivalDate;

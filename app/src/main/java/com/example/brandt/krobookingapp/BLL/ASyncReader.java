@@ -35,11 +35,6 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
     }
 
 
-
-
-
-
-
        private ArrayList<Rooms> parser(String response)
        {
            ArrayList<Rooms> all= new ArrayList<>();
@@ -48,33 +43,33 @@ public class ASyncReader extends AsyncTask<Void, Void, String>
                for (int i = 0; i < rooms.length(); i++) {
                    JSONObject room = rooms.getJSONObject(i);
                    String id = room.getString("_id");
-                   int roomNumber = room.getInt("RoomNumber");
-                   boolean rented = room.getBoolean("Rented");
-                   boolean doubleRoom = room.getBoolean("Double");
-                   boolean bathRoom = room.getBoolean("BathRoom");
-                   int roomPrice = room.getInt("RoomPrice");
+                   int roomNumber = room.getInt("roomNumber");
+                   boolean rented = room.getBoolean("rented");
+                   boolean bathRoom = room.getBoolean("bathRoom");
+                   int roomPrice = room.getInt("roomPrice");
 
-                   JSONObject booking = room.getJSONObject("Booking");
-                   boolean extraBed = booking.getBoolean("ExtraBed");
-                   boolean animal = booking.getBoolean("Animal");
+                   JSONObject booking = room.getJSONArray("bookings").getJSONObject(i);
+                   boolean doubleRoom = booking.getBoolean("double");
+                   boolean extraBed = booking.getBoolean("extraBed");
+                   boolean animal = booking.getBoolean("animal");
 
-                   JSONObject customer = booking.getJSONObject("Customer");
-                   String customerName = customer.getString("CustomerName");
-                   String customerPhoneNumber = customer.getString("CustomerPhoneNumber");
-                   boolean keybox = customer.getBoolean("Keybox");
-                   String notes = customer.getString("Notes");
-                   String customerEmail = customer.getString("CustomerEmail");
+                   JSONObject customer = booking.getJSONObject("customer");
+                   String customerName = customer.getString("customerName");
+                   String customerPhoneNumber = customer.getString("customerPhoneNumber");
+                   boolean keybox = customer.getBoolean("keybox");
+                   String notes = customer.getString("notes");
+                   String customerEmail = customer.getString("customerEmail");
 
-                   JSONObject company = customer.getJSONObject("Company");
-                   String companyName = company.getString("CompanyName");
-                   String companyPhoneNumber = company.getString("CompanyPhoneNumber");
-                   String companyEmail = company.getString("CompanyEmail");
+                   JSONObject company = customer.getJSONObject("company");
+                   String companyName = company.getString("companyName");
+                   String companyPhoneNumber = company.getString("companyPhoneNumber");
+                   String companyEmail = company.getString("companyEmail");
 
 
                    Company co = new Company(companyName,companyPhoneNumber,companyEmail);
                    Customer cu = new Customer(customerName,customerPhoneNumber,keybox,notes,customerEmail,co);
-                   Booking bu = new Booking(extraBed,animal,cu);
-                   Rooms r = new Rooms(id,roomNumber,rented,doubleRoom,bathRoom,roomPrice,bu);
+                   Booking[] bu = new Booking[]{new Booking(extraBed,animal,doubleRoom,cu)};
+                   Rooms r = new Rooms(id,roomNumber,rented,bathRoom,roomPrice,bu);
                    all.add(r);
                }
 
