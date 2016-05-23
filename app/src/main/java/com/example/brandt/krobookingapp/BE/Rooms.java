@@ -1,11 +1,12 @@
 package com.example.brandt.krobookingapp.BE;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by kenne on 27-04-2016.
  */
-public class Rooms {
+public class Rooms implements Serializable {
 
     String id;
     int roomNumber;

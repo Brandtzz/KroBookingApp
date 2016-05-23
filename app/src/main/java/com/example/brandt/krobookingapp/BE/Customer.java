@@ -1,9 +1,11 @@
 package com.example.brandt.krobookingapp.BE;
 
+import java.io.Serializable;
+
 /**
  * Created by kenne on 27-04-2016.
  */
-public class Customer {
+public class Customer implements Serializable{
 
     String customerName;
     String customerPhoneNumber;
